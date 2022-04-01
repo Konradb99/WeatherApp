@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/normal_view">
+
+    <fragment
+        android:id="@+id/normal_view"
+        android:name="com.example.pogodynka.normal_view"
+        android:label="fragment_normal_view"
+        tools:layout="@layout/fragment_normal_view" >
+        <action
+            android:id="@+id/action_normal_view_to_senior_view"
+            app:destination="@id/senior_view" />
+    </fragment>
+    <fragment
+        android:id="@+id/senior_view"
+        android:name="com.example.pogodynka.senior_view"
+        android:label="fragment_senior_view"
+        tools:layout="@layout/fragment_senior_view" />
+</navigation>
