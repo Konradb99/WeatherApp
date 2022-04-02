@@ -2,15 +2,17 @@ package com.example.pogodynka
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
-import android.location.LocationRequest
 import android.os.Bundle
 import android.os.Handler
+import android.provider.Settings
 import android.util.Log
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
@@ -21,16 +23,9 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.pogodynka.ViewModel.LocationVM
 import com.example.pogodynka.ViewModel.LocationVMFactory
-import com.example.pogodynka.model.WeatherResponse
-import com.example.pogodynka.model.WeatherService
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.google.android.gms.location.*
 import java.util.*
+
 
 @Suppress("DEPRECATION")
 class SplashScreen : AppCompatActivity() {
@@ -38,8 +33,8 @@ class SplashScreen : AppCompatActivity() {
     private var PERMISSION_ID = 1000
 
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private lateinit var locationRequest: LocationRequest
     lateinit var locVM: LocationVM
+    private var isEnabled: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,9 +56,28 @@ class SplashScreen : AppCompatActivity() {
         val factoryCardVM = LocationVMFactory((requireNotNull(this).application), this.applicationContext)
         locVM = ViewModelProvider(this, factoryCardVM).get(LocationVM::class.java)
         getCurrentLocation()
+    }
 
-        // we used the postDelayed(Runnable, time) method
-        // to send a message with a delayed time.
+    fun showEnableLocationSetting() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+            .setCancelable(false)
+            .setPositiveButton("Yes",
+                DialogInterface.OnClickListener { dialog, id ->
+                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                    isEnabled = true
+                    getCurrentLocation()
+                })
+            .setNegativeButton("No",
+                DialogInterface.OnClickListener { dialog, id ->
+                    dialog.cancel()
+                    finish()
+                })
+        val alert: AlertDialog = builder.create()
+        alert.show()
+    }
+
+    private fun continueApp(){
         Handler().postDelayed({
             val geocoder = Geocoder(this, Locale.getDefault())
             val addresses = geocoder.getFromLocation(locVM.latitude, locVM.longitude, 1)
@@ -75,12 +89,8 @@ class SplashScreen : AppCompatActivity() {
             intent.putExtra("cityName", cityName)
             startActivity(intent)
             finish()
-        }, 1500) // 3000 is the delayed time in milliseconds.
-
-
-
+        }, 1500)
     }
-
 
     private fun CheckPermission():Boolean{
         if(
@@ -138,17 +148,17 @@ class SplashScreen : AppCompatActivity() {
                         locVM.latitude = location.latitude
                     }
                 }
-
+                continueApp()
             }else{
-                Toast.makeText(this, "Turn on location", Toast.LENGTH_SHORT).show()
+                if(!isEnabled){
+                    showEnableLocationSetting()
+                }
+                else{
+                    Handler().postDelayed({getCurrentLocation()}, 2000)
+                }
             }
         }else{
             RequestPermission()
         }
-    }
-
-    companion object {
-        var BaseUrl = "https://api.openweathermap.org/"
-        var AppId = "247efa34607080a70fe2d53cce68d206"
     }
 }
