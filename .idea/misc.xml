@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/drawable/background.xml" value="0.196" />
         <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/drawable/card_shadow.xml" value="0.196" />
+        <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/drawable/senior_norm_button.xml" value="0.2745" />
         <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/drawable/splash_background.xml" value="0.2985" />
-        <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/layout/activity_main_senior.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/layout/activity_splash_screen.xml" value="0.20364583333333333" />
         <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/layout/forecast_item.xml" value="0.358695652173913" />
         <entry key="..\:/Users/konra/StudioProjects/Pogodynka/app/src/main/res/layout/fragment_normal_view.xml" value="0.25" />

@@ -38,9 +38,8 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/senior_norm_button"
-
-                        android:text="Senior"
-                        android:textColor="#404040"
+                        android:text="Normal"
+                        android:textColor="#000000"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:scaleX="1"
@@ -53,10 +52,9 @@
                         android:layout_weight="4"/>
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="12dp"
-                        android:paddingTop="15dp"
+                        android:layout_width="30dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
                         android:src="@drawable/loc"
                         />
                 </LinearLayout>
@@ -65,14 +63,14 @@
                 <TextView
                     android:id="@+id/cityName"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
+                    android:layout_height="42dp"
                     android:text="KROSNO"
-                    android:textSize="22sp"
+                    android:textSize="30sp"
                     android:textStyle="bold"
-                    android:textColor="#404040"
+                    android:textColor="#000000"
                     android:textAlignment="textStart"
                     android:layout_marginEnd="15dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="13dp"
                     />
             </LinearLayout>
 
@@ -81,8 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:name="androidx.navigation.fragment.NavHostFragment"
-                app:defaultNavHost="true"
-                app:navGraph="@navigation/nav_graph"
+                app:navGraph="@navigation/nav_graph2"
                 />
 
         </LinearLayout>

@@ -55,6 +55,10 @@ class SplashScreen : AppCompatActivity() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         val factoryCardVM = LocationVMFactory((requireNotNull(this).application), this.applicationContext)
         locVM = ViewModelProvider(this, factoryCardVM).get(LocationVM::class.java)
+
+
+
+
         getCurrentLocation()
     }
 
@@ -101,8 +105,6 @@ class SplashScreen : AppCompatActivity() {
         }else{
             return false
         }
-
-
     }
 
     private fun RequestPermission(){

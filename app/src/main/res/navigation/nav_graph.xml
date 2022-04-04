@@ -18,5 +18,9 @@
         android:id="@+id/senior_view"
         android:name="com.example.pogodynka.senior_view"
         android:label="fragment_senior_view"
-        tools:layout="@layout/fragment_senior_view" />
+        tools:layout="@layout/fragment_senior_view" >
+        <action
+            android:id="@+id/action_senior_view_to_normal_view"
+            app:destination="@id/normal_view" />
+    </fragment>
 </navigation>

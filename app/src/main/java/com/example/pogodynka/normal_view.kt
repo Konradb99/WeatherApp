@@ -22,10 +22,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pogodynka.ViewModel.LocationVM
 import com.example.pogodynka.ViewModel.LocationVMFactory
+import com.example.pogodynka.model.WeatherService
 import com.example.pogodynka.others.Constants.REQUEST_CODE_LOCATION_PERMISSION
 import com.example.pogodynka.others.TrackingUtility
+import org.w3c.dom.Text
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
